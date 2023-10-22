@@ -1,9 +1,40 @@
 body {
-    background-color: black;
-    color: white;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    margin: 0;
+    padding: 0;
 }
 
-.subsection {
-    font-size: 20px;
-    margin: 10px;
+nav {
+    background-color: #222; /* Dark gray navigation bar */
 }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+section {
+    padding: 20px;
+    background: url('background-video.mp4') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
+    background-size: cover;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+/* Add more specific styles for your content within each section as needed */
