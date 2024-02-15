@@ -27,7 +27,7 @@ nav a {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #f9f9f9; /* Dropdown background color */
+    background-color: #000; /* Dropdown background color */
     min-width: 160px;
     z-index: 1;
 }
@@ -37,7 +37,7 @@ nav a {
 }
 
 .dropdown-content li a {
-    color: #333; /* Dropdown link color */
+    color: #fff; /* Dropdown link color */
     text-decoration: none;
 }
 
@@ -53,7 +53,7 @@ nav a {
 
 /* Style the dropdown links on hover */
 .dropdown-content li a:hover {
-    background-color: #ddd; /* Hover background color */
+    background-color: #333; /* Hover background color */
 }
 
 /* Body styles */
