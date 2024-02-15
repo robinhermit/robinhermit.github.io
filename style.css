@@ -36,8 +36,7 @@ section {
 h2 {
     font-size: 24px;
 }
-
-/* Hide dropdown content by default */
+/* Hide all dropdown content by default */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -46,8 +45,13 @@ h2 {
     z-index: 1;
 }
 
-/* Show dropdown content when hovering over the dropdown */
-.dropdown:hover .dropdown-content {
+/* Show top-level dropdown content when hovering over the dropdown */
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+/* Show nested dropdown content when hovering over the parent dropdown */
+.dropdown-content li:hover > .dropdown-content {
     display: block;
 }
 
@@ -65,6 +69,3 @@ h2 {
 .dropdown-content li a:hover {
     background-color: #ddd; /* Hover background color */
 }
-
-
-/* Add more specific styles for your content within each section as needed */
