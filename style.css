@@ -1,48 +1,44 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
+/* Reset default browser styles */
+body, ul {
     margin: 0;
     padding: 0;
 }
 
-nav {
-    background-color: #222; /* Dark gray navigation bar */
-}
-
+/* Navigation styles */
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 nav li {
-    display: inline;
-    margin-right: 10px;
+    position: relative;
+    display: inline-block;
 }
 
 nav a {
+    display: block;
+    padding: 10px 20px;
     text-decoration: none;
-    color: #fff;
+    color: #333;
 }
 
-section {
-    padding: 20px;
-    background: url('robinhermit.github.io/media/background.mov') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
-    background-size: cover;
-    text-align: center;
-}
-
-h2 {
-    font-size: 24px;
-}
-/* Hide all dropdown content by default */
+/* Dropdown menu styles */
 .dropdown-content {
     display: none;
     position: absolute;
+    top: 100%;
+    left: 0;
     background-color: #f9f9f9; /* Dropdown background color */
     min-width: 160px;
     z-index: 1;
+}
+
+.dropdown-content li {
+    padding: 10px;
+}
+
+.dropdown-content li a {
+    color: #333; /* Dropdown link color */
+    text-decoration: none;
 }
 
 /* Show top-level dropdown content when hovering over the dropdown */
@@ -55,17 +51,28 @@ h2 {
     display: block;
 }
 
-/* Style the dropdown links */
-.dropdown-content li {
-    padding: 10px;
-}
-
-.dropdown-content li a {
-    color: #333; /* Dropdown link color */
-    text-decoration: none;
-}
-
 /* Style the dropdown links on hover */
 .dropdown-content li a:hover {
     background-color: #ddd; /* Hover background color */
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Section styles */
+section {
+    padding: 20px;
+    background: url('background-video.mp4') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
+    background-size: cover;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
 }
