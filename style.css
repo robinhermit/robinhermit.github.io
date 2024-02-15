@@ -90,7 +90,7 @@ body {
 /* Section styles */
 section {
     padding: 20px;
-    background: url('media/pic.png') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
+    background: url('media/background.mp4') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
     background-size: auto;
     text-align: center;
 }
