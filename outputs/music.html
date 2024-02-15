@@ -5,39 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music - Robin Morabito</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS file -->
-    <style>
-        /* Additional CSS specific to the Music page */
-        body {
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
-            padding: 20px; /* Add padding for content */
-        }
-        h1 {
-            font-size: 28px; /* Larger font size for main title */
-            margin-bottom: 20px; /* Add margin below the main title */
-        }
-        .album-link {
-            display: block; /* Display links as blocks */
-            margin-bottom: 10px; /* Add space between each link */
-            border-bottom: 1px solid #fff; /* Add horizontal line below each link */
-            padding-bottom: 10px; /* Add space below each link */
-        }
-    </style>
 </head>
 <body>
     <nav>
         <ul>
+            
             <li class="dropdown">
                 <a href="#">Outputs</a>
                 <ul class="dropdown-content">
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <!-- Add more sections to the dropdown menu as needed -->
+                    <li><a href="outputs/music.html">Music</a></li>
+                    <li><a href="outputs/multimedia.html">Multimedia</a></li>
+                    <li><a href="outputs/sonifications.html">Sonifications</a></li>
+                    <li><a href="outputs/poetry.html">Poetry</a></li>
+                    <li class="dropdown">
+                        <a href="#">Research</a>
+                            <ul class="dropdown-content nested-dropdown"> <!-- Nested dropdown -->
+                                <li><a href="outputs/research/publications.html">Publications</a></li>
+                                <li><a href="outputs/research/code.html">Code</a></li>
+                                <!-- Add more sub-subsections here -->
+                            </ul>
+                    </li>
+                    
                 </ul>
             </li>
-            <!-- Add more top-level menu items as needed -->
+            
+            <li class="dropdown">
+                <a href="#">About</a>
+                <ul class="dropdown-content">
+                    <li><a href="about/bio.html">Bio</a></li>
+                    <li><a href="about/curriculum.html">Curriculum</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="contact.html">Contact</a></li>
+            
+            <!-- Add more list items with links to other sections and their sub-sections -->
         </ul>
     </nav>
+    
     <h1>Music</h1>
     <div class="album-link">
         <!-- Embedded Bandcamp link to your first album -->
