@@ -91,7 +91,7 @@ body {
 section {
     padding: 20px;
     background: url('media/pic.png') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
-    background-size: cover;
+    background-size: auto;
     text-align: center;
 }
 
