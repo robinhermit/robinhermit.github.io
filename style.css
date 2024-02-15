@@ -100,6 +100,26 @@ h2 {
 }
 
 
+/* Additional CSS specific to the Music page */
+body {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    font-family: Arial, sans-serif; /* Specify font family */
+    padding: 20px; /* Add padding for content */
+}
+
+h1 {
+    font-size: 28px; /* Larger font size for main title */
+    text-align: center; /* Center-align the title */
+}
+
+.album-link {
+    margin-bottom: 20px; /* Add space between each album link */
+}
+
+
+
+
 
 /* Media query for devices with a maximum width of 768px (e.g., tablets and smaller screens) */
 @media only screen and (max-width: 768px) {
