@@ -37,4 +37,34 @@ h2 {
     font-size: 24px;
 }
 
+/* Hide dropdown content by default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9; /* Dropdown background color */
+    min-width: 160px;
+    z-index: 1;
+}
+
+/* Show dropdown content when hovering over the dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Style the dropdown links */
+.dropdown-content li {
+    padding: 10px;
+}
+
+.dropdown-content li a {
+    color: #333; /* Dropdown link color */
+    text-decoration: none;
+}
+
+/* Style the dropdown links on hover */
+.dropdown-content li a:hover {
+    background-color: #ddd; /* Hover background color */
+}
+
+
 /* Add more specific styles for your content within each section as needed */
