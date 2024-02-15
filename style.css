@@ -56,6 +56,28 @@ nav a {
     background-color: #333; /* Hover background color */
 }
 
+/* Adjust size and position of nested dropdown menu */
+.dropdown-content .nested-dropdown {
+    width: 100px; /* Adjust width as needed */
+    top: 0;
+    left: 100%; /* Position to the right of the parent dropdown */
+}
+
+.dropdown-content .nested-dropdown li {
+    padding: 5px;
+}
+
+/* Style the nested dropdown links */
+.dropdown-content .nested-dropdown li a {
+    color: #fff; /* Change font color to white */
+    text-decoration: none;
+}
+
+/* Style the nested dropdown links on hover */
+.dropdown-content .nested-dropdown li a:hover {
+    background-color: #333; /* Change hover background color to dark gray */
+}
+
 /* Body styles */
 body {
     font-family: Arial, sans-serif;
