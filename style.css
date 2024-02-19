@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'CarbonType';
     src: url('../media/carbontype.tff') format('tff'), /* Modern Browsers */
-         url('../media/carbontype.tff') format('tff'); /* Legacy Browsers */
     font-weight: normal;
     font-style: normal;
 }
