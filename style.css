@@ -99,22 +99,26 @@ nav a {
 
 /* Other CSS styles... */
 
-/* Video container wrapper styles */
 .video-wrapper {
     display: flex;
+    flex-direction: column;
     background-color: #333;
     color: #fff;
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
+    overflow: hidden; /* Hide overflow for positioned pseudo-elements */
+    position: relative; /* Position the text box relative to the video container */
 }
 
 .video-container {
-    width: 70%;
+    width: 100%;
+    position: relative; /* Position the pseudo-elements relative to the video container */
 }
 
+/* Style for text box */
 .text-box {
-    width: 30%;
+    width: 100%;
     padding: 0 20px;
 }
 
@@ -126,6 +130,22 @@ nav a {
 .text-box p {
     font-size: 0.9em;
     line-height: 1.4;
+}
+
+/* Style for alternating text boxes */
+.video-wrapper:nth-child(even) .text-box {
+    float: right; /* Float text box to the right for even numbered video wrappers */
+}
+
+.video-wrapper:nth-child(odd) .text-box {
+    float: left; /* Float text box to the left for odd numbered video wrappers */
+}
+
+/* Clear floating elements */
+.video-wrapper:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 
