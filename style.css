@@ -96,6 +96,43 @@ nav a {
     background-color: #333; /* Change hover background color to dark gray */
 }
 
+
+/* Other CSS styles... */
+
+/* Video container wrapper styles */
+.video-wrapper {
+    display: flex;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.video-container {
+    width: 70%;
+}
+
+.text-box {
+    width: 30%;
+    padding: 0 20px;
+}
+
+.text-box h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+.text-box p {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+
+
+
+
+
 /* Body styles */
 body {
     font-family: 'CarbonType', Arial, sans-serif;
