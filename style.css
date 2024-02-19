@@ -1,20 +1,4 @@
-@font-face {
-    font-family: 'CarbonType';
-    src: url('../media/carbon.ttf') format('tff'), /* Modern Browsers */
-    font-weight: normal;
-    font-style: normal;
-}
-z
 
-/* Media query for devices with a maximum width of 768px (e.g., tablets and smaller screens) */
-@media only screen and (max-width: 768px) {
-    /* Adjust styles for smaller screens */
-}
-
-/* Media query for devices with a maximum width of 480px (e.g., smartphones) */
-@media only screen and (max-width: 480px) {
-    /* Adjust styles for smartphones */
-}
 
 /* Reset default browser styles */
 body, ul {
@@ -150,7 +134,23 @@ nav a {
 
 
 
+@font-face {
+    font-family: 'CarbonType';
+    src: url('../media/carbon.ttf') format('tff'), /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+z
 
+/* Media query for devices with a maximum width of 768px (e.g., tablets and smaller screens) */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+}
+
+/* Media query for devices with a maximum width of 480px (e.g., smartphones) */
+@media only screen and (max-width: 480px) {
+    /* Adjust styles for smartphones */
+}
 
 
 /* Body styles */
