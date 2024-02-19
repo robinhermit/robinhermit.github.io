@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'CarbonType';
-    src: url('../media/carbontype.tff') format('tff'), /* Modern Browsers */
+    src: url('../media/carbon.tff') format('tff'), /* Modern Browsers */
     font-weight: normal;
     font-style: normal;
 }
-
+z
 
 /* Media query for devices with a maximum width of 768px (e.g., tablets and smaller screens) */
 @media only screen and (max-width: 768px) {
