@@ -121,33 +121,6 @@ nav a {
     font-family:'Courier New', monospace;
     text-align: center;
 }
-/*
-.video-wrapper:nth-child(even) .text-box {
-    float: right; 
-    order: 1;
-}
-
-.video-wrapper:nth-child(odd) .text-box {
-    float: left; 
-    order: -1;
-}
-
-
-.video-wrapper:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-
-
-@font-face {
-    font-family: 'CarbonType';
-    src: url('../media/carbon.ttf') format('tff'),
-    font-weight: normal;
-    font-style: normal;
-}
-
 
 @media only screen and (max-width: 768px) {
     
