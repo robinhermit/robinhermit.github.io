@@ -159,6 +159,9 @@ z
         width: 100%;
         margin-top:20px;
     }
+    .video-container {
+        width: 100%;
+    }
 }
 
 /* Media query for devices with a maximum width of 480px (e.g., smartphones) */
