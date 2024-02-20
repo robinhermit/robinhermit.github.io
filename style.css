@@ -79,7 +79,9 @@ nav a {
 }
 
 
-/* Other CSS styles... */
+/*
+
+
 
 .video-wrapper {
     display: flex;
@@ -91,16 +93,16 @@ nav a {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
-    overflow: hidden; /* Hide overflow for positioned pseudo-elements */
-    position: relative; /* Position the text box relative to the video container */
+    overflow: hidden; 
+    position: relative; 
 }
 
 .video-container {
     width: 100%;
-    position: relative; /* Position the pseudo-elements relative to the video container */
+    position: relative; 
 }
 
-/* Style for text box */
+
 .text-box {
     flex-grow: 1;
     padding: 10px;
@@ -168,6 +170,9 @@ z
 @media only screen and (max-width: 480px) {
     /* Adjust styles for smartphones */
 }
+*/
+
+
 
 
 /* Body styles */
