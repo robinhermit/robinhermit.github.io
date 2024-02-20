@@ -79,10 +79,6 @@ nav a {
 }
 
 
-
-
-
-
 .video-wrapper {
     display: flex;
     flex-direction: row;
@@ -120,6 +116,14 @@ nav a {
     line-height: 1.4;
     font-family:'Courier New', monospace;
     text-align: center;
+}
+
+
+#external-text {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    font-weight: normal;
+    /* Add more styles as needed */
 }
 
 @media only screen and (max-width: 768px) {
