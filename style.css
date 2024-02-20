@@ -121,7 +121,7 @@ nav a {
 
 
 #external-text, #external-text-content {
-    max-width: 80%; /* Set the maximum width of the text container */
+    max-width: 100%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
     font-family: 'Courier New', monospace; /* Use Courier New font */
     font-size: 16px; /* Set the font size of the text */
