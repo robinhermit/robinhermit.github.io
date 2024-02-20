@@ -119,18 +119,8 @@ nav a {
 }
 
 
-#external-text {
-    max-width: 80%; /* Set the maximum width of the text container */
-    margin: 0 auto; /* Center the text container horizontally */
-    font-family: 'Courier New', monospace; /* Use Courier New font */
-    font-size: 16px; /* Set the font size of the text */
-    font-weight: normal; /* Set the font weight */
-    text-align: justify; /* Justify the text */
-    overflow-wrap: break-word; /* Wrap long words onto the next line */
-    word-wrap: break-word; /* For older browsers */
-    hyphens: auto; /* Enable hyphenation for better word wrapping */
-}
-#external-text-content {
+
+#external-text, #external-text-content {
     max-width: 80%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
     font-family: 'Courier New', monospace; /* Use Courier New font */
