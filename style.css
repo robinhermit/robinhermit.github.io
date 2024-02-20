@@ -97,7 +97,7 @@ nav a {
 
 .video-container {
     width: 100%;
-    position: relative; /* Position the pseudo-elements relative to the video container */
+    position: absolute; /* Position the pseudo-elements relative to the video container */
 }
 
 /* Style for text box */
