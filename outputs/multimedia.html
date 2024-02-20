@@ -55,5 +55,17 @@
 
 
     </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var videoWrappers = document.querySelectorAll(".video-wrapper");
+            videoWrappers.forEach(function(wrapper) {
+                if (Math.random() < 0.5) {
+                    wrapper.prepend(wrapper.querySelector(".text-box"));
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
