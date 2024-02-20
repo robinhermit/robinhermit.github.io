@@ -59,7 +59,7 @@
 
 
         <section id="external-text">
-            <!-- Your research content here -->
+            <pre id="external-text-content"></pre>
         </section>
     </main>
 
@@ -74,7 +74,7 @@
                 .then(response => response.text())
                 .then(text => {
                     // Display the text content in the external-text section
-                    document.getElementById('external-text').innerHTML = text;
+                    document.getElementById('external-text-content').textContent = text;
                 })
                 .catch(error => console.error('Error fetching text:', error));
         });
