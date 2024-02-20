@@ -119,17 +119,17 @@ nav a {
     font-family:'Courier New', monospace;
     text-align: center;
 }
-
-/* Style for alternating text boxes */
+/*
 .video-wrapper:nth-child(even) .text-box {
-    /*float: right; /* Float text box to the right for even numbered video wrappers */
+    float: right; 
     order: 1;
 }
 
 .video-wrapper:nth-child(odd) .text-box {
-    /*float: left; /* Float text box to the left for odd numbered video wrappers */
+    float: left; 
     order: -1;
 }
+*/
 
 /* Clear floating elements */
 .video-wrapper:after {
