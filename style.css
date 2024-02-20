@@ -86,7 +86,7 @@ nav a {
 .video-wrapper {
     display: flex;
     flex-direction: column;
-    background-color: #333;
+    background-color: #000;
     color: #fff;
     margin-bottom: 20px;
     padding: 10px;
@@ -102,13 +102,13 @@ nav a {
 
 /* Style for text box */
 .text-box {
-    width: 100%;
-    padding: 0 20px;
+    padding: 10px;
 }
 
 .text-box h3 {
     font-size: 1.2em;
     margin-top: 0;
+    text-align: center;
 }
 
 .text-box p {
@@ -118,11 +118,13 @@ nav a {
 
 /* Style for alternating text boxes */
 .video-wrapper:nth-child(even) .text-box {
-    float: right; /* Float text box to the right for even numbered video wrappers */
+    /*float: right; /* Float text box to the right for even numbered video wrappers */
+    order: 1;
 }
 
 .video-wrapper:nth-child(odd) .text-box {
-    float: left; /* Float text box to the left for odd numbered video wrappers */
+    /*float: left; /* Float text box to the left for odd numbered video wrappers */
+    order: -1;
 }
 
 /* Clear floating elements */
