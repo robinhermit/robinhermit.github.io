@@ -108,12 +108,15 @@ nav a {
 .text-box h3 {
     font-size: 1.2em;
     margin-top: 0;
+    font-family: 'Courier New', monospace;
     text-align: center;
 }
 
 .text-box p {
     font-size: 0.9em;
     line-height: 1.4;
+    font-family:'Courier New', monospace;
+    text-align: center;
 }
 
 /* Style for alternating text boxes */
