@@ -3,12 +3,12 @@ body, ul {
     margin: 0;
     padding: 0;
 }
-/*
+
 nav {
     font-size:18px;
     max-width: 100%;
 }
-*/
+
 /* Navigation styles */
 nav ul {
     list-style: none;
@@ -34,7 +34,7 @@ nav a {
     top: 100%;
     left: 0;
     background-color: #000; /* Dropdown background color */
-    min-width: 160px;
+    /*min-width: 160px;*/
     max-width: 100%;
     z-index: 1;
 }
