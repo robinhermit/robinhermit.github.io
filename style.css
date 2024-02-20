@@ -65,7 +65,7 @@ nav a {
 
 /* Adjust size and position of nested dropdown menu */
 .dropdown-content .nested-dropdown {
-    width: 100px; /* Adjust width as needed */
+    width: auto; /* Adjust width as needed */
     top: 0;
     left: 100%; /* Position to the right of the parent dropdown */
 }
