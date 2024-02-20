@@ -29,7 +29,7 @@ nav a {
 
 /* Dropdown menu styles */
 .dropdown-content {
-    display: inline-block;
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
