@@ -132,6 +132,7 @@ nav a {
     word-wrap: break-word; /* For older browsers */
     white-space: pre-wrap;
     hyphens: auto; /* Enable hyphenation for better word wrapping */
+    background-size: cover;
 }
 
 
