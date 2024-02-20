@@ -128,6 +128,7 @@ nav a {
     font-weight: normal; /* Set the font weight */
     text-align: justify; /* Justify the text */
     overflow-wrap: break-word; /* Wrap long words onto the next line */
+    overflow-x: scroll;
     word-wrap: break-word; /* For older browsers */
     white-space: pre-wrap;
     hyphens: auto; /* Enable hyphenation for better word wrapping */
