@@ -126,11 +126,11 @@ nav a {
     font-family: 'Courier New', monospace; /* Use Courier New font */
     font-size: 16px; /* Set the font size of the text */
     font-weight: normal; /* Set the font weight */
-    text-align: justify; /* Justify the text */
+    /*text-align: justify; */
     overflow-wrap: break-word; /* Wrap long words onto the next line */
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     word-wrap: break-word; /* For older browsers */
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
     hyphens: auto; /* Enable hyphenation for better word wrapping */
     background-size: cover;
 }
