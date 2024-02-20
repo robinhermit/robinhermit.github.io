@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    Sonification - Robin Morabito</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#">Outputs</a>
+                <ul class="dropdown-content">
+                    <li><a href="../outputs/music.html">Music</a></li>
+                    <li><a href="../outputs/multimedia.html">Multimedia</a></li>
+                    <li><a href="../outputs/sonifications.html">Sonifications</a></li>
+                    <li><a href="../outputs/poetry.html">Poetry</a></li>
+                    <li class="dropdown">
+                        <a href="#">Research</a>
+                            <ul class="dropdown-content nested-dropdown"> <!-- Nested dropdown -->
+                                <li><a href="../outputs/research/publications.html">Publications</a></li>
+                                <li><a href="../outputs/research/code.html">Code</a></li>
+                            </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">About</a>
+                <ul class="dropdown-content">
+                    <li><a href="../about/bio.html">Bio</a></li>
+                    <li><a href="../about/curriculum.html">Curriculum</a></li>
+                </ul>
+            </li>
+            <li><a href="../contact.html">Contact</a></li>
+            <!-- Add more list items with links to other sections and their sub-sections -->
+        </ul>
+    </nav>
+    <section>
+  
+       <h2>selected sonification works </h2> 
+       
+
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/tXtThv6WeBs?si=rhgq_NoQLbotiwWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="text-box">
+                <h3>yeastronic</h3>
+                <p>sonification of beer fermentation - 2023</p>
+            </div>
+        </div>
+
+
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fitsbobhermit%2Fvideos%2F6508649119208674%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+            <div class="text-box">
+                <h3>the only object they couldretrieve from earth's lost civilization </h3>
+                <p> An electronic relic, who is said to have travelled through time and space, is displayed as the visual centre of this piece, suspended in the middle of the room. Inside of it a hidden circuit, composed of different sensors on a Bela board and an embedded Pure Data code, generates sound patterns in relation to the distance from it, anytime a movement in the room is detected. The only information provided to the audience entering the space is that encoded inside of the object by the future post-human civilization who retrieved it and archived it, without understanding its function.  Alienation from our current technology, fear of climate disaster, bodily experience of sound, societal disconnection, are just few of the themes approached by this work. The audience is invited to experience the effect of their own presence in the sound space, and in doing so to reconnect with each other and with the object. Boundaries between composer-performer and audience are blurred in the context created by a non-human system, self-sufficient yet relying on audience’s participation to generate sound.
+                </p>
+            </div>
+        </div>
+        
+
+        
+
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var videoWrappers = document.querySelectorAll(".video-wrapper");
+            videoWrappers.forEach(function(wrapper) {
+                if (window.innerWidth > 786) {
+                    if (Math.random() < 0.5) {
+                        wrapper.prepend(wrapper.querySelector(".text-box"));
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+  </html>
