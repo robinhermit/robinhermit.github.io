@@ -34,8 +34,8 @@ nav a {
     top: 100%;
     left: 0;
     background-color: #000; /* Dropdown background color */
-    /*min-width: 160px;*/
-    max-width: 100%;
+    min-width: auto;
+    max-width: max-content;
     z-index: 1;
 }
 
