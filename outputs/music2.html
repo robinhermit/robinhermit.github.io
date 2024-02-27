@@ -69,7 +69,7 @@
         canvas.height = window.innerHeight;
 
         // Ball properties
-        var ballRadius = 20;
+        var ballRadius = 40;
         var balls = [];
 
         // Ball constructor
@@ -87,6 +87,14 @@
             var dx = (Math.random() - 0.5) * 5; // Random horizontal velocity
             var dy = (Math.random() - 0.5) * 5; // Random vertical velocity
             balls.push(new Ball(x, y, dx, dy));
+        }
+
+        // Collision detection function
+        function checkCollision(ball1, ball2) {
+            var dx = ball1.x - ball2.x;
+            var dy = ball1.y - ball2.y;
+            var distance = Math.sqrt(dx * dx + dy * dy);
+            return distance < 2 * ballRadius; // Collided if distance is less than sum of radii
         }
 
         // Animation loop
@@ -113,6 +121,19 @@
                 if (ball.y + ballRadius > canvas.height || ball.y - ballRadius < 0) {
                     ball.dy = -ball.dy; // Reverse vertical velocity
                 }
+
+                // Check for collisions with other balls
+                balls.forEach(function(ball2) {
+                    if (ball1 !== ball2 && checkCollision(ball1, ball2)) {
+                        // Swap velocities to simulate bouncing off each other
+                        var tempDx = ball1.dx;
+                        var tempDy = ball1.dy;
+                        ball1.dx = ball2.dx;
+                        ball1.dy = ball2.dy;
+                        ball2.dx = tempDx;
+                        ball2.dy = tempDy;
+                    }
+                });
             });
         }
 
