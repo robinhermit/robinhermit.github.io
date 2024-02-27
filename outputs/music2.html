@@ -5,18 +5,11 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
     <title>Music - Robin Morabito</title>
     <style>
-        body {
-            font-family: 'Courier New', monospace;
+        body, canvas {
             margin: 0;
             padding: 0;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        canvas{
-            display:block;
-            background-image: url('../media/background.gif');
-
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -73,77 +66,77 @@
         backgroundImage.src = 'background.jpg'; // Replace 'background.jpg' with your image path
         backgroundImage.onload = () => {
         // Draw background image on canvas
-        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-    };
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        };
 
-    // Ball object
-    class Ball {
-        constructor(x, y, radius, color, velocityX, velocityY) {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.color = color;
-            this.velocityX = velocityX;
-            this.velocityY = velocityY;
-        }
-
-        // Draw the ball on the canvas
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-            ctx.closePath();
-        }
-
-        // Update the ball's position and check for collisions
-        update() {
-            // Update position
-            this.x += this.velocityX;
-            this.y += this.velocityY;
-
-            // Check for collisions with canvas boundaries
-            if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
-                this.velocityX = -this.velocityX;
+        // Ball object
+        class Ball {
+            constructor(x, y, radius, color, velocityX, velocityY) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocityX = velocityX;
+                this.velocityY = velocityY;
             }
-            if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
-                this.velocityY = -this.velocityY;
+
+            // Draw the ball on the canvas
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            // Update the ball's position and check for collisions
+            update() {
+                // Update position
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+
+                // Check for collisions with canvas boundaries
+                if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
+                    this.velocityX = -this.velocityX;
+                }
+                if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
+                    this.velocityY = -this.velocityY;
+                }
             }
         }
-    }
 
-    // Create balls
-    const balls = [];
-    for (let i = 0; i < 4; i++) {
-        const radius = 20;
-        const x = Math.random() * (canvas.width - radius * 2) + radius;
-        const y = Math.random() * (canvas.height - radius * 2) + radius;
-        const velocityX = (Math.random() - 0.5) * 4; // Random velocity
-        const velocityY = (Math.random() - 0.5) * 4; // Random velocity
-        balls.push(new Ball(x, y, radius, 'rgba(255, 255, 255, 0.5)', velocityX, velocityY));
-    }
+        // Create balls
+        const balls = [];
+        for (let i = 0; i < 4; i++) {
+            const radius = 20;
+            const x = Math.random() * (canvas.width - radius * 2) + radius;
+            const y = Math.random() * (canvas.height - radius * 2) + radius;
+            const velocityX = (Math.random() - 0.5) * 4; // Random velocity
+            const velocityY = (Math.random() - 0.5) * 4; // Random velocity
+            balls.push(new Ball(x, y, radius, 'rgba(255, 255, 255, 0.5)', velocityX, velocityY));
+        }
 
-    // Animation loop
-    function animate() {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Animation loop
+        function animate() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw background image
-        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+            // Draw background image
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-        // Update and draw balls
-        balls.forEach(ball => {
-            ball.update();
-            ball.draw();
-        });
+            // Update and draw balls
+            balls.forEach(ball => {
+                ball.update();
+                ball.draw();
+            });
 
-        // Request next animation frame
-        requestAnimationFrame(animate);
-    }
+            // Request next animation frame
+            requestAnimationFrame(animate);
+        }
 
-    // Start animation
-    animate();
-</script>
+        // Start animation
+        animate();
+    </script>
 
 
 
