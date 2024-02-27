@@ -49,7 +49,7 @@
 
 
     
-    <section>
+    <section id="bouncing-balls">
   
     <div class="ball" id="uno"></div>
     <div class="ball" id="due"></div>
@@ -61,7 +61,47 @@
 
 
 
-    <script src="../media/script.js"></script>
+    <script>
+        const balls = document.querySelectorAll('.ball');
+
+        balls.forEach(ball => {
+            const initialX = Math.random() * window.innerWidth;
+            const initialY = Math.random() * window.innerHeight;
+            const speedX = (Math.random() - 0.5) * 2; // Random horizontal speed
+            const speedY = (Math.random() - 0.5) * 2; // Random vertical speed
+
+            ball.style.left = `${initialX}px`;
+            ball.style.top = `${initialY}px`;
+
+            setInterval(() => {
+                let x = parseFloat(ball.style.left);
+                let y = parseFloat(ball.style.top);
+
+                  x += speedX;
+                  y += speedY;
+
+            // Handle bouncing off the screen boundaries
+                if (x < 0 || x + ball.clientWidth > window.innerWidth) {
+                    speedX *= -1;
+                }
+                if (y < 0 || y + ball.clientHeight > window.innerHeight) {
+                    speedY *= -1;
+                }
+
+                ball.style.left = `${x}px`;
+                ball.style.top = `${y}px`;
+            }, 1000 / 60); // Update ball position 60 times per second
+        });
+
+        // Add click event listeners to navigate to other HTML pages
+        balls.forEach(ball => {
+            ball.addEventListener('click', () => {
+                const ballId = ball.id;
+                window.location.href = `${ballId}.html`;
+            });
+        });
+
+    </script>
 
 
 
