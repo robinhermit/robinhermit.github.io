@@ -13,6 +13,10 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+
+        canvas{
+            display:block;
+        }
     </style>
 </head>
 <body>
@@ -52,7 +56,6 @@
 
 
 
-
     
     <section id="bouncing-balls">
   
@@ -64,48 +67,67 @@
 
     </section>
 
+    <canvas id="canvas"> </canvas>
 
 
     <script>
-        const balls = document.querySelectorAll('.ball');
+        // Get the canvas element and its 2D rendering context
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
 
-        balls.forEach(ball => {
-            const initialX = Math.random() * window.innerWidth;
-            const initialY = Math.random() * window.innerHeight;
-            const speedX = (Math.random() - 0.5) * 2; // Random horizontal speed
-            const speedY = (Math.random() - 0.5) * 2; // Random vertical speed
+        // Set canvas dimensions to fill the entire window
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            ball.style.left = `${initialX}px`;
-            ball.style.top = `${initialY}px`;
+        // Ball properties
+        var ballRadius = 20;
+        var balls = [];
 
-            setInterval(() => {
-                let x = parseFloat(ball.style.left);
-                let y = parseFloat(ball.style.top);
+        // Ball constructor
+        function Ball(x, y, dx, dy) {
+            this.x = x;
+            this.y = y;
+            this.dx = dx;
+            this.dy = dy;
+        }
 
-                  x += speedX;
-                  y += speedY;
+        // Generate random balls
+        for (var i = 0; i < 4; i++) {
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height;
+            var dx = (Math.random() - 0.5) * 5; // Random horizontal velocity
+            var dy = (Math.random() - 0.5) * 5; // Random vertical velocity
+            balls.push(new Ball(x, y, dx, dy));
+        }
 
-            // Handle bouncing off the screen boundaries
-                if (x < 0 || x + ball.clientWidth > window.innerWidth) {
-                    speedX *= -1;
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+            // Draw and update each ball
+            balls.forEach(function(ball) {
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // White with 50% transparency
+                ctx.fill();
+                ctx.closePath();
+
+                // Update ball position
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+
+                // Check for collisions with walls
+                if (ball.x + ballRadius > canvas.width || ball.x - ballRadius < 0) {
+                    ball.dx = -ball.dx; // Reverse horizontal velocity
                 }
-                if (y < 0 || y + ball.clientHeight > window.innerHeight) {
-                    speedY *= -1;
+                if (ball.y + ballRadius > canvas.height || ball.y - ballRadius < 0) {
+                    ball.dy = -ball.dy; // Reverse vertical velocity
                 }
-
-                ball.style.left = `${x}px`;
-                ball.style.top = `${y}px`;
-            }, 1000 / 60); // Update ball position 60 times per second
-        });
-
-        // Add click event listeners to navigate to other HTML pages
-        balls.forEach(ball => {
-            ball.addEventListener('click', () => {
-                const ballId = ball.id;
-                window.location.href = `${ballId}.html`;
             });
-        });
+        }
 
+        animate(); // Start the animation loop
     </script>
 
 
