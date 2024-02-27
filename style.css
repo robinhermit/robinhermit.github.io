@@ -126,6 +126,11 @@ nav a {
 }
 
 
+.instagram-embed {
+    background-color: #333;
+    color: #fff;
+}
+
 
 #external-text, #external-text-content {
     max-width: 100%; /* Set the maximum width of the text container */
