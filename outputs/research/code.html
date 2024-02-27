@@ -34,7 +34,13 @@
         }
         .code-preview {
             width: 50%;
+            height: 600px; /* Set the height of the preview container */
+            border: 1px solid #ccc; /* Add border for better visibility */
+            overflow: auto; /* Add overflow for scrolling if content exceeds container height */
+            padding: 10px; /* Add padding for better readability */
+            box-sizing: border-box; /* Include padding in the width calculation */
         }
+
 
         
         #code-container, code-container-2 {
