@@ -69,7 +69,7 @@
         canvas.height = window.innerHeight;
 
         // Ball properties
-        var ballRadius = 40;
+        var ballRadius = 30;
         var balls = [];
 
         // Ball constructor
@@ -103,23 +103,23 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
 
             // Draw and update each ball
-            balls.forEach(function(ball) {
+            balls.forEach(function(ball1) {
                 ctx.beginPath();
-                ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+                ctx.arc(ball1.x, ball1.y, ballRadius, 0, Math.PI * 2);
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // White with 50% transparency
                 ctx.fill();
                 ctx.closePath();
 
                 // Update ball position
-                ball.x += ball.dx;
-                ball.y += ball.dy;
+                ball1.x += ball1.dx;
+                ball1.y += ball1.dy;
 
                 // Check for collisions with walls
-                if (ball.x + ballRadius > canvas.width || ball.x - ballRadius < 0) {
-                    ball.dx = -ball.dx; // Reverse horizontal velocity
+                if (ball1.x + ballRadius > canvas.width || ball1.x - ballRadius < 0) {
+                    ball1.dx = -ball1.dx; // Reverse horizontal velocity
                 }
-                if (ball.y + ballRadius > canvas.height || ball.y - ballRadius < 0) {
-                    ball.dy = -ball.dy; // Reverse vertical velocity
+                if (ball1.y + ballRadius > canvas.height || ball1.y - ballRadius < 0) {
+                    ball1.dy = -ball1.dy; // Reverse vertical velocity
                 }
 
                 // Check for collisions with other balls
