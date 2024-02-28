@@ -206,8 +206,14 @@
 
                     // Check if the pixel is within the specified radius around the ball
                     if (distance < ball.radius) {
-                        // Perform displacement calculation and color update for this pixel
-                        // We'll implement this in the next steps
+                         // Calculate the displacement of the pixel based on its distance from the center of the ball
+                        const distortionStrength = (ball.radius - distance) / ball.radius;
+                        const displacementX = dx * distortionStrength;
+                        const displacementY = dy * distortionStrength;
+
+                // Update the color of the pixel based on the displacement
+                // This step will be implemented in the next steps
+                        
                     }
                 }
             }
