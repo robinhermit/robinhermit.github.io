@@ -102,7 +102,7 @@
 
                 
                 // Apply distortion effect around the ball's position
-                const distortionAmount = 20; // Adjust distortion amount as needed
+                const distortionAmount = 80; // Adjust distortion amount as needed
                 const imageData = ctx.getImageData(this.x - distortionAmount, this.y - distortionAmount, this.radius * 2 + distortionAmount * 2, this.radius * 2 + distortionAmount * 2);
                 for (let i = 0; i < imageData.data.length; i += 4) {
                     const dx = this.x - (this.x - distortionAmount + (i / 4) % (this.radius * 2 + distortionAmount * 2));
@@ -125,6 +125,31 @@
                 if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
                     this.velocityY = -this.velocityY;
                 }
+                
+             // Check for collisions with other balls
+                balls.forEach(ball => {
+                    if (ball !== this) {
+                        const dx = this.x - ball.x;
+                        const dy = this.y - ball.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < this.radius + ball.radius) {
+                            // Collision detected, adjust velocities
+                            const angle = Math.atan2(dy, dx);
+                            const thisVelocity = Math.sqrt(this.velocityX * this.velocityX + this.velocityY * this.velocityY);
+                            const ballVelocity = Math.sqrt(ball.velocityX * ball.velocityX + ball.velocityY * ball.velocityY);
+                            const thisDirection = Math.atan2(this.velocityY, this.velocityX);
+                            const ballDirection = Math.atan2(ball.velocityY, ball.velocityX);
+                            const thisNewVelocityX = ballVelocity * Math.cos(ballDirection - angle);
+                            const thisNewVelocityY = ballVelocity * Math.sin(ballDirection - angle);
+                            const ballNewVelocityX = thisVelocity * Math.cos(thisDirection - angle);
+                            const ballNewVelocityY = thisVelocity * Math.sin(thisDirection - angle);
+                            this.velocityX = thisNewVelocityX;
+                            this.velocityY = thisNewVelocityY;
+                            ball.velocityX = ballNewVelocityX;
+                            ball.velocityY = ballNewVelocityY;
+                        }
+                    }
+                });
 
                 // Draw the ball on the canvas
                 this.draw();
