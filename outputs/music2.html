@@ -72,6 +72,27 @@
             animate();
         };
 
+        // Add event listener to the canvas
+        canvas.addEventListener('click', function(event) {
+            // Get click coordinates
+            const clickX = event.clientX;
+            const clickY = event.clientY;
+
+            // Iterate through balls
+            balls.forEach(ball => {
+                // Calculate distance between click coordinates and ball center
+                const dx = clickX - ball.x;
+                const dy = clickY - ball.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // If click is within ball radius, perform action (e.g., navigate to a new page)
+                if (distance <= ball.radius) {
+            window.location.href = 'your_new_page.html'; // Replace 'your_new_page.html' with the desired URL
+                }
+            });
+        });
+        
+
         // Ball object
         class Ball {
             constructor(x, y, radius, color, velocityX, velocityY) {
@@ -158,6 +179,9 @@
                 this.draw();
             }
         }
+
+
+
 
         // Create balls
         const balls = [];
