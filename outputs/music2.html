@@ -121,24 +121,6 @@
                 this.x += this.velocityX;
                 this.y += this.velocityY;
 
-              /*  
-                // Apply distortion effect around the ball's position
-                const distortionAmount = 80; // Adjust distortion amount as needed
-                const imageData = ctx.getImageData(this.x - distortionAmount, this.y - distortionAmount, this.radius * 2 + distortionAmount * 2, this.radius * 2 + distortionAmount * 2);
-                for (let i = 0; i < imageData.data.length; i += 4) {
-                    const dx = this.x - (this.x - distortionAmount + (i / 4) % (this.radius * 2 + distortionAmount * 2));
-                    const dy = this.y - (this.y - distortionAmount + Math.floor((i / 4) / (this.radius * 2 + distortionAmount * 2)));
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < this.radius) {
-                        // Apply distortion effect based on distance from the ball's center
-                        const factor = 1 - distance / this.radius;
-                        imageData.data[i] += factor * 100; // Adjust the distortion effect as needed
-                        imageData.data[i + 1] += factor * 50; // Adjust the distortion effect as needed
-                        imageData.data[i + 2] += factor * 20; // Adjust the distortion effect as needed
-                    }
-                }
-                ctx.putImageData(imageData, this.x - distortionAmount, this.y - distortionAmount);
-*/
                 // Check for collisions with canvas boundaries
                 if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
                     this.velocityX = -this.velocityX;
@@ -281,61 +263,12 @@
                 pixels[index + 3] = pixels[newIndex + 3];
             }
             }
+            }
             // Put the modified pixel data back to the canvas
             ctx.putImageData(imageData, 0, 0);
 
             // Request next animation frame
             requestAnimationFrame(animate);
-        }
-/*
-        // Function to apply distortion effect around the ball
-        function applyDistortion(ball) {
-            // Get the pixel data of the canvas
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const pixels = imageData.data;
-
-            // Iterate through each pixel
-            for (let i = 0; i < pixels.length; i += 4) {
-                const x = (i / 4) % canvas.width;
-                const y = Math.floor((i / 4) / canvas.width);
-
-                // Calculate the distance between the current pixel and the ball's position
-                const dx = x - ball.x;
-                const dy = y - ball.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                // Apply distortion effect within a circular region around the ball
-                if (distance < ball.radius) {
-                    // Calculate the strength of the distortion based on the distance from the ball
-                    const distortionStrength = (ball.radius - distance) / ball.radius;
-
-                    // Calculate the displacement of the pixel
-                    const displacementX = dx * distortionStrength;
-                    const displacementY = dy * distortionStrength;
-
-                    // Calculate the new position of the pixel after displacement
-                    const newX = x + displacementX;
-                    const newY = y + displacementY;
-
-                    // Check if the new position is within the canvas bounds
-                    if (newX >= 0 && newX < canvas.width && newY >= 0 && newY < canvas.height) {
-                        // Get the color of the pixel at the new position
-                        const index = (newY * canvas.width + newX) * 4;
-                        const red = pixels[index];
-                        const green = pixels[index + 1];
-                        const blue = pixels[index + 2];
-                        const alpha = pixels[index + 3];
-
-                        // Apply the color of the pixel to the current pixel with some opacity
-                        pixels[i] = red;
-                        pixels[i + 1] = green;
-                        pixels[i + 2] = blue;
-                        pixels[i + 3] = alpha;
-                    }
-                }
-            }
-
-*/
         }
 
     </script>
