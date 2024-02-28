@@ -207,13 +207,48 @@
                 ball.update();
                 
                 //applyDistortion(ball);
-                //ball.draw();
+                ball.draw();
             });
+
+            // Calculate displacement for each pixel in the background image
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+
+            for (let y = 0; y < canvas.height; y++) {
+                for (let x = 0; x < canvas.width; x++) {
+                    // Calculate displacement for this pixel based on the distance from the center of each ball
+
+                    let displacementX = 0;
+                    let displacementY = 0;
+            
+                    balls.forEach(ball => {
+                        const dx = x - ball.x;
+                        const dy = y - ball.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < ball.radius) {
+                            // Calculate the strength of the distortion based on the distance from the ball
+                            const distortionStrength = (ball.radius - distance) / ball.radius;
+                            displacementX += dx * distortionStrength;
+                            displacementY += dy * distortionStrength;
+                        }
+                    });
+
+                    // Update the pixel's color based on the displacement
+                    const index = (y * canvas.width + x) * 4;
+                    pixels[index] = pixels[index + displacementX];
+                    pixels[index + 1] = pixels[index + displacementY];
+                    pixels[index + 2] = pixels[index + displacementX];
+                    pixels[index + 3] = pixels[index + displacementY];
+                    
+                }
+            }
+            // Put the modified pixel data back to the canvas
+            ctx.putImageData(imageData, 0, 0);
 
             // Request next animation frame
             requestAnimationFrame(animate);
         }
-
+/*
         // Function to apply distortion effect around the ball
         function applyDistortion(ball) {
             // Get the pixel data of the canvas
@@ -261,10 +296,9 @@
                 }
             }
 
-            // Put the modified pixel data back to the canvas
-            ctx.putImageData(imageData, 0, 0);
-        }
 
+        }
+*/
     </script>
 
 </body>
