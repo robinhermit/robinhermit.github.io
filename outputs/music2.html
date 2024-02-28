@@ -256,6 +256,7 @@
             // Check if the new position is within the canvas bounds
             if (newX >= 0 && newX < canvas.width && newY >= 0 && newY < canvas.height) {
                 // Get the color of the pixel at the new position
+                const index = (y * canvas.width + x) * 4;
                 const newIndex = (newY * canvas.width + newX) * 4;
                 pixels[index] = pixels[newIndex];
                 pixels[index + 1] = pixels[newIndex + 1];
