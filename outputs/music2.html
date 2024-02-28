@@ -216,6 +216,8 @@
         
         // Animation loop
         function animate() {
+            
+            ctx.willReadFrequently = true;
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
