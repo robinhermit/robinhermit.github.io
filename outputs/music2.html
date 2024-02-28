@@ -194,6 +194,26 @@
             balls.push(new Ball(x, y, radius, 'rgba(255, 255, 255, 0.5)', velocityX, velocityY));
         }
 
+        // Function to calculate displacement and update pixel color for each ball
+        function calculateDisplacementAndColor(ball) {
+            // Iterate through each pixel within the specified radius around the ball
+            for (let y = Math.max(0, ball.y - ball.radius); y < Math.min(canvas.height, ball.y + ball.radius); y++) {
+                for (let x = Math.max(0, ball.x - ball.radius); x < Math.min(canvas.width, ball.x + ball.radius); x++) {
+                    // Calculate the distance between the current pixel and the center of the ball
+                    const dx = x - ball.x;
+                    const dy = y - ball.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    // Check if the pixel is within the specified radius around the ball
+                    if (distance < ball.radius) {
+                        // Perform displacement calculation and color update for this pixel
+                        // We'll implement this in the next steps
+                    }
+                }
+            }
+        }
+
+        
         // Animation loop
         function animate() {
             // Clear canvas
@@ -206,7 +226,7 @@
             balls.forEach(ball => {
                 ball.update();
                 
-                //applyDistortion(ball);
+                calculateDisplacementAndColor(ball); // Call the function to calculate displacement and update color
                 ball.draw();
             });
 
