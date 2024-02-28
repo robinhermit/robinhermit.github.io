@@ -100,105 +100,33 @@
                 this.x += this.velocityX;
                 this.y += this.velocityY;
 
-
-Apologies for the oversight. Let's integrate the distortion effect for each ball. We'll update the code to apply a distortion effect around each ball's position on the background image. Here's the revised code:
-
-javascript
-Copy code
-// Initialize canvas and context
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-// Set canvas dimensions to match viewport
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// Load background image
-const backgroundImage = new Image();
-backgroundImage.src = '../media/background.gif'; // Replace 'background.jpg' with your image path
-backgroundImage.onload = () => {
-    // Draw background image on canvas
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
-    // Start animation after background image is loaded
-    animate();
-};
-
-// Ball object
-class Ball {
-    constructor(x, y, radius, color, velocityX, velocityY) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.velocityX = velocityX;
-        this.velocityY = velocityY;
-    }
-
-    // Draw the ball on the canvas
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    // Update the ball's position and apply distortion effect
-    update() {
-        // Update position
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-
-        // Apply distortion effect around the ball's position
-        const distortionAmount = 20; // Adjust distortion amount as needed
-        const imageData = ctx.getImageData(this.x - distortionAmount, this.y - distortionAmount, this.radius * 2 + distortionAmount * 2, this.radius * 2 + distortionAmount * 2);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            const dx = this.x - (this.x - distortionAmount + (i / 4) % (this.radius * 2 + distortionAmount * 2));
-            const dy = this.y - (this.y - distortionAmount + Math.floor((i / 4) / (this.radius * 2 + distortionAmount * 2)));
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < this.radius) {
-                // Apply distortion effect based on distance from the ball's center
-                const factor = 1 - distance / this.radius;
-                imageData.data[i] += factor * 100; // Adjust the distortion effect as needed
-                imageData.data[i + 1] += factor * 50; // Adjust the distortion effect as needed
-                imageData.data[i + 2] += factor * 20; // Adjust the distortion effect as needed
-            }
-        }
-        ctx.putImageData(imageData, this.x - distortionAmount, this.y - distortionAmount);
-
-        // Check for collisions with canvas boundaries
-        if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
-            this.velocityX = -this.velocityX;
-        }
-        if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
-            this.velocityY = -this.velocityY;
-        }
-
-        // Check for collisions between balls
-        balls.forEach(otherBall => {
-            if (otherBall !== this) {
-                const dx = otherBall.x - this.x;
-                const dy = otherBall.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                // If collision detected, update velocities
-                if (distance < this.radius + otherBall.radius) {
-                    const angle = Math.atan2(dy, dx);
-                    const targetX = this.x + Math.cos(angle) * (this.radius + otherBall.radius);
-                    const targetY = this.y + Math.sin(angle) * (this.radius + otherBall.radius);
-                    const ax = (targetX - otherBall.x) * 0.05;
-                    const ay = (targetY - otherBall.y) * 0.05;
-
-                    this.velocityX -= ax;
-                    this.velocityY -= ay;
-                    otherBall.velocityX += ax;
-                    otherBall.velocityY += ay;
+                // Apply distortion effect around the ball's position
+                const distortionAmount = 20; // Adjust distortion amount as needed
+                const imageData = ctx.getImageData(this.x - distortionAmount, this.y - distortionAmount, this.radius * 2 + distortionAmount * 2, this.radius * 2 + distortionAmount * 2);
+                for (let i = 0; i < imageData.data.length; i += 4) {
+                    const dx = this.x - (this.x - distortionAmount + (i / 4) % (this.radius * 2 + distortionAmount * 2));
+                    const dy = this.y - (this.y - distortionAmount + Math.floor((i / 4) / (this.radius * 2 + distortionAmount * 2)));
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < this.radius) {
+                        // Apply distortion effect based on distance from the ball's center
+                        const factor = 1 - distance / this.radius;
+                        imageData.data[i] += factor * 100; // Adjust the distortion effect as needed
+                        imageData.data[i + 1] += factor * 50; // Adjust the distortion effect as needed
+                        imageData.data[i + 2] += factor * 20; // Adjust the distortion effect as needed
+                    }
                 }
-            }
-        });
+                ctx.putImageData(imageData, this.x - distortionAmount, this.y - distortionAmount);
 
-        // Draw the ball on the canvas
+                // Check for collisions with canvas boundaries
+                if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
+                    this.velocityX = -this.velocityX;
+                }
+                if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) {
+                    this.velocityY = -this.velocityY;
+                }
+
+                // Draw the ball on the canvas
                 this.draw();
             }
         }
@@ -230,6 +158,7 @@ class Ball {
             // Request next animation frame
             requestAnimationFrame(animate);
         }
+
     </script>
 
 </body>
