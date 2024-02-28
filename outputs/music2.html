@@ -238,31 +238,42 @@
 
             for (let y = 0; y < canvas.height; y++) {
                 for (let x = 0; x < canvas.width; x++) {
-                    // Calculate displacement for this pixel based on the distance from the center of each ball
-
-                    let displacementX = 0;
-                    let displacementY = 0;
-            
-                    balls.forEach(ball => {
-                        const dx = x - ball.x;
-                        const dy = y - ball.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        if (distance < ball.radius) {
-                            // Calculate the strength of the distortion based on the distance from the ball
-                            const distortionStrength = (ball.radius - distance) / ball.radius;
-                            displacementX += dx * distortionStrength;
-                            displacementY += dy * distortionStrength;
-                        }
-                    });
-
-                    // Update the pixel's color based on the displacement
-                    const index = (y * canvas.width + x) * 4;
-                    pixels[index] = pixels[index + displacementX];
-                    pixels[index + 1] = pixels[index + displacementY];
-                    pixels[index + 2] = pixels[index + displacementX];
-                    pixels[index + 3] = pixels[index + displacementY];
                     
+            // Calculate displacement for this pixel based on the distance from the center of each ball
+            let displacementX = 0;
+            let displacementY = 0;
+            let totalDistortionStrength = 0; // Keep track of total distortion strength
+
+            balls.forEach(ball => {
+                const dx = x - ball.x;
+                const dy = y - ball.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < ball.radius) {
+                    // Calculate the strength of the distortion based on the distance from the ball
+                    const distortionStrength = (ball.radius - distance) / ball.radius;
+                    displacementX += dx * distortionStrength;
+                    displacementY += dy * distortionStrength;
+                    totalDistortionStrength += distortionStrength;
                 }
+            });
+
+            // Normalize displacement values to ensure they are within the canvas bounds
+            displacementX /= totalDistortionStrength;
+            displacementY /= totalDistortionStrength;
+
+            // Calculate the new position of the pixel after displacement
+            const newX = Math.floor(x + displacementX);
+            const newY = Math.floor(y + displacementY);
+
+            // Check if the new position is within the canvas bounds
+            if (newX >= 0 && newX < canvas.width && newY >= 0 && newY < canvas.height) {
+                // Get the color of the pixel at the new position
+                const newIndex = (newY * canvas.width + newX) * 4;
+                pixels[index] = pixels[newIndex];
+                pixels[index + 1] = pixels[newIndex + 1];
+                pixels[index + 2] = pixels[newIndex + 2];
+                pixels[index + 3] = pixels[newIndex + 3];
+            }
             }
             // Put the modified pixel data back to the canvas
             ctx.putImageData(imageData, 0, 0);
