@@ -1,3 +1,14 @@
+240731.a
+
+language
+numerical (quantity) 
+      -> pictographic (icon) 
+            -> ideographic (symbol) -> logographic (morpheme)
+                                          -> phonographic (just sounds)
+                                                -> syllabaries
+                                                -> abjads (consonants only)
+                                                -> alphabets (all phonemes)
+                                          -> phono-semantic hybrid writing (morphemes + meaning + sound)
 
 
 
