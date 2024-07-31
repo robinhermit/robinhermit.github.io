@@ -1,3 +1,25 @@
+240731.b
+
+[0]      letter-centric
+      1 word = 1 bar
+      1 syllable = 1 beat; length = 1/n.letters; notes_in_beat = n.letters
+
+[1]      syllable-centric
+      1 word = 1 bar
+      1 syllable = 1 note; length = n.letters.quantized
+            n.letters:
+                  • 0.125
+                  • • 0.25
+                  • • • 0.5
+                  • • • • 0.75
+                  • • • • • 1
+                  n(•) = n * 0.125
+
+
+
+
+
+
 240731.a
 
 language
