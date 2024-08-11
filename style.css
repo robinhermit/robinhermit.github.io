@@ -142,12 +142,16 @@ nav a {
     position: absolute;
 }
 
+/* Make numbers bold */
+.bold-number {
+    font-weight: bold;
+}
 
 
 
 #external-text, #external-text-content div {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    color:white;
+    color: white;
     max-width: 100%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
     font-family: 'Courier New', monospace; /* Use Courier New font */
