@@ -67,6 +67,52 @@
         <!-- Add similar sections for documentation, code resources, poetry, and about -->
     
     <script>
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function randomizeLineStyle(lineElement) {
+            // Random font size between 12px and 36px
+            const fontSize = getRandomInt(12, 36) + 'px';
+            
+            // Random vertical shift between -20px and 20px
+            const verticalShift = getRandomInt(-20, 20) + 'px';
+
+            // Random alignment: left, center, or right
+            const alignments = ['left', center, right];
+            const alignment = alignments[getRandomInt(0, 2)];
+
+            // Apply the random styles
+            lineElement.style.fontSize = fontSize;
+            lineElement.style.position = 'relative';
+            lineElement.style.top = verticalShift;
+            lineElement.style.textAlign = alignment;
+            lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../media/external-text-file.txt')
+                .then(response => response.text())
+                .then(text => {
+                    // Split the text into lines
+                    const lines = text.split('\n');
+                    const container = document.getElementById('external-text-content');
+                    container.innerHTML = ''; // Clear any existing content
+
+                    // Process each line
+                    lines.forEach(line => {
+                        const lineElement = document.createElement('div');
+                        lineElement.textContent = line;
+                        randomizeLineStyle(lineElement);
+                        container.appendChild(lineElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching text:', error));
+        });
+        
+        /*
         document.addEventListener("DOMContentLoaded", function() {
             // Fetch the content of the external text file
             console.log('Fetching external text...');
@@ -77,7 +123,7 @@
                     document.getElementById('external-text-content').textContent = text;
                 })
                 .catch(error => console.error('Error fetching text:', error));
-        });
+        });*/
     </script>
         
 </body>
