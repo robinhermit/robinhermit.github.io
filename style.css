@@ -155,7 +155,7 @@ nav a {
     overflow-wrap: break-word; /* Wrap long words onto the next line */
     overflow-x: hidden;*/
     word-wrap: break-word; /* For older browsers */
-    /*white-space: pre-wrap;*/
+    white-space: pre-wrap;
     box-sizing: border-box;
     hyphens: auto; /* Enable hyphenation for better word wrapping */
     background-size: cover;
