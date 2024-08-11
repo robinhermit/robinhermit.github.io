@@ -85,10 +85,16 @@
             lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
         }
 
+        function boldNumbers(text) {
+            return text.replace(/(\d+)/g, '<span class="bold-number">$1</span>');
+        }
+        
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../media/external-text-file.txt')
                 .then(response => response.text())
                 .then(text => {
+                    const formattedText = boldNumbers(text);
+                    
                     // Split the text into lines
                     const lines = text.split('\n');
                     const container = document.getElementById('external-text-content');
