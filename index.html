@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Robin Morabito</title>   
     <style>
@@ -56,18 +56,12 @@
              <!-- Your research content here -->
         </section>
         
-
-
         <section id="external-text">
-            <pre id="external-text-content"></pre>
+            <div id="external-text-content"></div> <!-- Changed to div -->
         </section>
     </main>
 
-        <!-- Other Sections -->
-        <!-- Add similar sections for documentation, code resources, poetry, and about -->
-    
     <script>
-
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
@@ -80,7 +74,7 @@
             const verticalShift = getRandomInt(-20, 20) + 'px';
 
             // Random alignment: left, center, or right
-            const alignments = ['left', center, right];
+            const alignments = ['left', 'center', 'right'];
             const alignment = alignments[getRandomInt(0, 2)];
 
             // Apply the random styles
@@ -90,7 +84,6 @@
             lineElement.style.textAlign = alignment;
             lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
         }
-
 
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../media/external-text-file.txt')
@@ -111,20 +104,6 @@
                 })
                 .catch(error => console.error('Error fetching text:', error));
         });
-        
-        /*
-        document.addEventListener("DOMContentLoaded", function() {
-            // Fetch the content of the external text file
-            console.log('Fetching external text...');
-            fetch('../media/external-text-file.txt')
-                .then(response => response.text())
-                .then(text => {
-                    // Display the text content in the external-text section
-                    document.getElementById('external-text-content').textContent = text;
-                })
-                .catch(error => console.error('Error fetching text:', error));
-        });*/
     </script>
-        
 </body>
 </html>
