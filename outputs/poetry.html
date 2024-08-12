@@ -58,15 +58,16 @@
             white-space: pre-wrap;
         }
 
+        /* Media query for smaller screens */
         @media (max-width: 768px) {
-            #poetry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .poem-container {
+                width: calc(100% / 2 - 40px); /* 2 containers per row on tablets */
             }
         }
-
+        
         @media (max-width: 480px) {
-            #poetry-grid {
-                grid-template-columns: 1fr;
+            .poem-container {
+                width: 100%; /* Single column on mobile devices */
             }
         }
         
