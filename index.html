@@ -61,55 +61,56 @@
         </section>
     </main>
 
-    <script>
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-        function randomizeLineStyle(lineElement) {
-            // Random font size between 12px and 36px
-            const fontSize = getRandomInt(12, 36) + 'px';
-            
-            // Random vertical shift between -20px and 20px
-            const verticalShift = getRandomInt(-20, 20) + 'px';
-
-            // Random alignment: left, center, or right
-            const alignments = ['left', 'center', 'right'];
-            const alignment = alignments[getRandomInt(0, 2)];
-
-            // Apply the random styles
-            lineElement.style.fontSize = fontSize;
-            lineElement.style.position = 'relative';
-            lineElement.style.top = verticalShift;
-            lineElement.style.textAlign = alignment;
-            lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
-        }
-
-        function boldNumbers(text) {
-            return text.replace(/(\d+)/g, '<span class="bold-number">$1</span>');
-        }
+    function randomizeLineStyle(lineElement) {
+        // Random font size between 12px and 36px
+        const fontSize = getRandomInt(12, 36) + 'px';
         
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('../media/external-text-file.txt')
-                .then(response => response.text())
-                .then(text => {
-                    const formattedText = boldNumbers(text);
-                    
-                    // Split the text into lines
-                    const lines = text.split('\n');
-                    const container = document.getElementById('external-text-content');
-                    container.innerHTML = ''; // Clear any existing content
+        // Random vertical shift between -20px and 20px
+        const verticalShift = getRandomInt(-20, 20) + 'px';
 
-                    // Process each line
-                    lines.forEach(line => {
-                        const lineElement = document.createElement('div');
-                        lineElement.textContent = line;
-                        randomizeLineStyle(lineElement);
-                        container.appendChild(lineElement);
-                    });
-                })
-                .catch(error => console.error('Error fetching text:', error));
-        });
-    </script>
+        // Random alignment: left, center, or right
+        const alignments = ['left', 'center', 'right'];
+        const alignment = alignments[getRandomInt(0, 2)];
+
+        // Apply the random styles
+        lineElement.style.fontSize = fontSize;
+        lineElement.style.top = verticalShift;
+        lineElement.style.textAlign = alignment;
+        lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
+    }
+
+    function boldNumbers(text) {
+        return text.replace(/(\d+)/g, '<span class="bold-number">$1</span>');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('../media/external-text-file.txt')
+            .then(response => response.text())
+            .then(text => {
+                // Bold numbers
+                const formattedText = boldNumbers(text);
+                
+                // Split the text into lines
+                const lines = formattedText.split('\n');
+                const container = document.getElementById('external-text-content');
+                container.innerHTML = ''; // Clear any existing content
+
+                // Process each line
+                lines.forEach(line => {
+                    const lineElement = document.createElement('div');
+                    lineElement.innerHTML = line; // Use innerHTML to allow for bold numbers
+                    randomizeLineStyle(lineElement);
+                    container.appendChild(lineElement);
+                });
+            })
+            .catch(error => console.error('Error fetching text:', error));
+    });
+</script>
+
 </body>
 </html>
