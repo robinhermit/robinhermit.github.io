@@ -4,12 +4,79 @@
     <meta name="viewport" content="width=device-width", initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css">
     <title>Poetry - Robin Morabito</title>
+
+
+    
     <style>
         body {
             font-family: 'Courier New', monospace;
         }
+       body {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.8) url('path_to_your_background_video') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        #poetry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax for different screen sizes */
+            grid-gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .poem-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-y: auto;
+            max-height: 400px; /* Adjust the max height */
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+        }
+
+        .poem-container:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .poem-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .poem-content {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            #poetry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            #poetry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
     </style>
+
+
+    
 </head>
+
+
+    
 <body>
     
     <nav>
@@ -44,12 +111,38 @@
             <!-- Add more list items with links to other sections and their sub-sections -->
         </ul>
     </nav>
-    <section>
-  
-    <h2>this section is still under construction, come back later!</h2> 
-       
+
+    <div id="poetry-grid">
+            <div class="poem-container">
+                <div class="poem-title">Poem Title 1</div>
+                <div class="poem-content">Your first poem goes here...</div>
+            </div>
+            <div class="poem-container">
+                <div class="poem-title">Poem Title 2</div>
+                <div class="poem-content">Your second poem goes here...</div>
+            </div>
+            <!-- Add more poem containers as needed -->
+    </div>
 
 
-    </section>
+    <script>
+        const fonts = ['Courier New', 'Lucida Console', 'Consolas', 'Monaco', 'Andale Mono'];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const grid = document.getElementById('poetry-grid');
+
+            // Randomize poem order
+            for (let i = grid.children.length; i >= 0; i--) {
+                grid.appendChild(grid.children[Math.random() * i | 0]);
+            }
+
+            // Assign random fonts to each poem
+            document.querySelectorAll('.poem-container').forEach(container => {
+                const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+                container.style.fontFamily = randomFont;
+            });
+        });
+    </script>
+    
 </body>
 </html>
