@@ -21,19 +21,25 @@
          #poetry-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-auto-rows: min-content;
-            grid-auto-flow: dense; /* Allows items to fill gaps */
+            grid-auto-rows: auto;
+            /*grid-auto-flow: dense;  */
             gap: 20px;
             padding: 20px;
         }
         
         .poem-container {
-            background: rgba(0, 0, 0, 0.5);
+            /*display: inline-block; */
+            width: 100%; /* Takes up full column width */
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 8px;
+            margin-bottom: 20px; /* Space between stacked items */
+            max-height: 400px; /* Maximum height before scrolling */
+            overflow-y: auto; /* Adds a scrollbar if content exceeds max-height */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
             font-size: 16px;
-            max-height: 200px;
+            position: relative;
         }
         .poem-container:hover {
             transform: scale(1.02);
@@ -49,17 +55,18 @@
             line-height: 1.6;
             white-space: pre-wrap;
         }
-        /* Media query for smaller screens */
+        /* Media queries */
         @media (max-width: 768px) {
-            .poem-container {
-                width: calc(100% / 2 - 40px); /* 2 containers per row on tablets */
+            #poetry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(50%, 1fr)); /* 2 columns on tablets */
             }
         }
         
         @media (max-width: 480px) {
-            .poem-container {
-                width: 100%; /* Single column on mobile devices */
+            #poetry-grid {
+                grid-template-columns: 1fr; /* Single column on mobile devices */
             }
+        }
         }
         
     </style>
