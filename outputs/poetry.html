@@ -48,6 +48,27 @@
             transform: scale(1.02);
             background: rgba(0, 0, 0, 0.8);
         }
+
+
+        /* For WebKit browsers (Chrome, Safari) */
+        .poem-container::-webkit-scrollbar {
+            width: 8px; /* Adjust the width of the scrollbar */
+        }
+        
+        .poem-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.5); /* Change the color and opacity of the scrollbar */
+            border-radius: 10px; /* Round the corners of the scrollbar */
+        }
+        
+        .poem-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1); /* Change the background of the scrollbar track */
+        }
+        
+        /* For Firefox */
+        .poem-container {
+            scrollbar-width: thin; /* Make the scrollbar thin */
+            scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Color of the scrollbar thumb and track */
+        }
         .poem-title {
             font-weight: bold;
             margin-bottom: 10px;
