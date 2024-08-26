@@ -7,6 +7,23 @@
     <style>
         body {
             font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        section{
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjusts the number of columns automatically */
+            gap: 20px; /* Space between items */
+            justify-items: center; /* Center the items horizontally */        
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border: 0;
         }
     </style>
 </head>
