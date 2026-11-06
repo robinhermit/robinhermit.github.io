@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'CarbonType';
+    src: url('media/carbon.ttf') format('truetype');
+}
+
 /* Reset default browser styles */
 body, ul {
     margin: 0;
@@ -225,4 +230,16 @@ h2 {
 
 a {
     color: white;
+}
+
+/* Code page: keep indentation and left alignment, scroll long files */
+.code-preview {
+    text-align: left;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    max-height: 400px;
+    overflow: auto;
+    margin: 10px auto 30px;
+    max-width: 900px;
 }
