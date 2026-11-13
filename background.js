@@ -6,6 +6,8 @@
   if (!script) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  var SPEED = 1; // playback speed of the loop: 1 = as encoded (~3 cross-fades per second), 0.6 = slower, 1.5 = faster
+
   var base = new URL('media/', script.src);
   var root = document.documentElement;
 
@@ -21,6 +23,8 @@
   video.preload = 'auto';
   video.poster = new URL('background-poster.jpg', base).href;
   video.src = new URL('background.mp4', base).href;
+  video.defaultPlaybackRate = SPEED;
+  video.playbackRate = SPEED;
 
   // only hide the still background once the video is really playing
   video.addEventListener('playing', function () { root.classList.add('has-bg-video'); });

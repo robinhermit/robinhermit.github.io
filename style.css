@@ -25,6 +25,7 @@ body, ul {
 nav {
     font-size:18px;
     max-width: 100%;
+    background-color: #000; /* menu bar stays solid black on every page */
 }
 
 /* Navigation styles */
@@ -51,7 +52,7 @@ nav a {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--panel); /* Dropdown background color */
+    background-color: #000; /* Dropdown background color */
     min-width: auto;
     max-width: max-content;
     z-index: 1;
@@ -169,7 +170,7 @@ nav a {
 
 #external-text, #external-text-content div {
     /* dark halo around the characters, for contrast against the moving background */
-    text-shadow: 0 0 3px #000, 0 0 9px #000, 0 0 20px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.85);
+    text-shadow: 0 0 2px #000, 0 0 5px #000, 0 0 9px #000, 0 0 14px #000, 0 0 22px #000, 0 0 32px rgba(0,0,0,0.95), 0 0 48px rgba(0,0,0,0.9);
     color: white;
     max-width: 100%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
