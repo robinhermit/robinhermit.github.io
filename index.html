@@ -82,7 +82,10 @@
         lineElement.style.fontSize = fontSize;
         lineElement.style.top = verticalShift;
         lineElement.style.textAlign = alignment;
-        lineElement.style.margin = '10px 0'; // Add some margin to avoid excessive overlaps
+        // keep the line box as wide as its text (so the aura hugs it) and place it left / centre / right
+        lineElement.style.margin = alignment === 'center' ? '10px auto'
+                                 : alignment === 'right'  ? '10px 0 10px auto'
+                                 :                          '10px auto 10px 0';
     }
 
     function boldNumbers(text) {
@@ -105,6 +108,7 @@
                 lines.forEach(line => {
                     const lineElement = document.createElement('div');
                     lineElement.innerHTML = line; // Use innerHTML to allow for bold numbers
+                    if (line.trim() === '') lineElement.classList.add('blank'); // no aura on empty lines
                     randomizeLineStyle(lineElement);
                     container.appendChild(lineElement);
                 });

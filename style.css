@@ -13,6 +13,7 @@
     --text: #e9e6df;      /* warm white */
     --muted: #9b978e;     /* secondary text */
     --accent: #c9b79c;    /* sand */
+    --aura: 0.85;         /* home page: darkness of the black aura behind the text (0 = none, 1 = solid) */
     --font-main: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
 }
 
@@ -170,7 +171,7 @@ nav a {
 
 #external-text, #external-text-content div {
     /* dark halo around the characters, for contrast against the moving background */
-    text-shadow: 0 0 2px #000, 0 0 5px #000, 0 0 9px #000, 0 0 14px #000, 0 0 22px #000, 0 0 32px rgba(0,0,0,0.95), 0 0 48px rgba(0,0,0,0.9);
+    text-shadow: 0 0 2px #000, 0 0 6px #000, 0 0 14px #000;
     color: white;
     max-width: 100%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
@@ -287,4 +288,28 @@ nav a:hover {
 }
 .has-bg-video body {
     background-image: none;
+}
+
+/* Home page: soft black aura behind each line of text and behind the title */
+#external-text-content div,
+#research h2 {
+    width: fit-content;
+    max-width: 100%;
+    padding: 2px 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 34px 10px rgba(0, 0, 0, var(--aura));
+    border-radius: 4px;
+}
+
+#research h2 {
+    color: #fff;
+    margin: 0.83em auto;
+    text-shadow: 0 0 2px #000, 0 0 6px #000, 0 0 14px #000;
+}
+
+/* empty lines of the text file: no aura */
+#external-text-content div.blank {
+    background: none;
+    box-shadow: none;
+    padding: 0;
 }
