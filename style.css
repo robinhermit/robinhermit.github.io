@@ -1,6 +1,19 @@
 @font-face {
-    font-family: 'CarbonType';
-    src: url('media/carbon.ttf') format('truetype');
+    font-family: 'Bricolage Grotesque';
+    src: url('media/fonts/BricolageGrotesque.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --bg: #0b0b0c;        /* page background */
+    --panel: #111214;     /* boxes, menus */
+    --panel-hover: #1d1e21;
+    --text: #e9e6df;      /* warm white */
+    --muted: #9b978e;     /* secondary text */
+    --accent: #c9b79c;    /* sand */
+    --font-main: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
 }
 
 /* Reset default browser styles */
@@ -28,7 +41,7 @@ nav a {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
-    color: #fff;
+    color: var(--text);
     font-size:20px;
 }
 
@@ -38,7 +51,7 @@ nav a {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #000; /* Dropdown background color */
+    background-color: var(--panel); /* Dropdown background color */
     min-width: auto;
     max-width: max-content;
     z-index: 1;
@@ -49,7 +62,7 @@ nav a {
 }
 
 .dropdown-content li a {
-    color: #fff; /* Dropdown link color */
+    color: var(--text); /* Dropdown link color */
     text-decoration: none;
 }
 
@@ -65,7 +78,7 @@ nav a {
 
 /* Style the dropdown links on hover */
 .dropdown-content li a:hover {
-    background-color: #333; /* Hover background color */
+    background-color: var(--panel-hover); /* Hover background color */
 }
 
 /* Adjust size and position of nested dropdown menu */
@@ -81,13 +94,13 @@ nav a {
 
 /* Style the nested dropdown links */
 .dropdown-content .nested-dropdown li a {
-    color: #fff; /* Change font color to white */
+    color: var(--text);
     text-decoration: none;
 }
 
 /* Style the nested dropdown links on hover */
 .dropdown-content .nested-dropdown li a:hover {
-    background-color: #333; /* Change hover background color to dark gray */
+    background-color: var(--panel-hover);
 }
 
 
@@ -96,8 +109,8 @@ nav a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--panel);
+    color: var(--text);
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
@@ -119,14 +132,14 @@ nav a {
 .text-box h3 {
     font-size: 1.2em;
     margin-top: 0;
-    font-family: 'Courier New', monospace;
+    font-family: inherit;
     text-align: center;
 }
 
 .text-box p {
     font-size: 0.9em;
     line-height: 1.4;
-    font-family:'Courier New', monospace;
+    font-family: inherit;
     text-align: center;
 }
 
@@ -155,7 +168,8 @@ nav a {
 
 
 #external-text, #external-text-content div {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    /* dark halo around the characters, for contrast against the moving background */
+    text-shadow: 0 0 3px #000, 0 0 9px #000, 0 0 20px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.85);
     color: white;
     max-width: 100%; /* Set the maximum width of the text container */
     margin: 0 auto; /* Center the text container horizontally */
@@ -209,9 +223,11 @@ nav a {
 
 /* Body styles */
 body {
-    font-family: 'CarbonType', Arial, sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
+    font-family: var(--font-main);
+    font-optical-sizing: auto;
+    line-height: 1.5;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
     padding: 0;
 }
@@ -219,7 +235,7 @@ body {
 /* Section styles */
 section {
     padding: 2px;
-    background: url('media/background.gif') no-repeat center center fixed; /* Replace 'background-video.mp4' with your video/GIF file */
+    background: url('media/background-poster.jpg') no-repeat center center fixed; /* still fallback; the animated video is added by background.js */
     background-size: cover;
     text-align: center;
 }
@@ -229,7 +245,15 @@ h2 {
 }
 
 a {
-    color: white;
+    color: var(--text);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+nav a:hover {
+    color: var(--accent);
 }
 
 /* Code page: keep indentation and left alignment, scroll long files */
@@ -242,4 +266,24 @@ a {
     overflow: auto;
     margin: 10px auto 30px;
     max-width: 900px;
+}
+
+/* Animated background (injected by background.js) */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* once the video is playing, the still image is no longer needed behind the sections */
+.has-bg-video section {
+    background: none;
+}
+.has-bg-video body {
+    background-image: none;
 }

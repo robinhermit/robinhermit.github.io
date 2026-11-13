@@ -11,9 +11,9 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Hide scrollbars */
-            font-family: 'Courier New', monospace;
         }
     </style>
+    <script src="../background.js" defer></script>
 </head>
 <body>
     
@@ -65,7 +65,7 @@
 
         // Load background image
         const backgroundImage = new Image();
-        backgroundImage.src = '../media/background.gif'; // Replace 'background.jpg' with your image path
+        backgroundImage.src = '../media/background-poster.jpg'; // Replace 'background.jpg' with your image path
         // Draw background image on canvas
         backgroundImage.onload = function() {
             ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
