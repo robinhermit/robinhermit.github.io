@@ -63,16 +63,29 @@
         .bubble:hover .orb { transform: scale(1.1); filter: brightness(1.15); }
         .bubble:focus-visible { outline: none; }
         .bubble:focus-visible .orb { outline: 2px dashed #fff; outline-offset: 4px; }
-        .t {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 4;
-            overflow: hidden;
-            padding: 0 14%;
-            line-height: 1.15;
-            overflow-wrap: anywhere;
-            text-shadow: 0 0 3px #000, 0 0 7px #000;
+        /* cover picture (pre-warped into a sphere by tools/fetch_covers.py) and glass shine on top */
+        .orb { position: relative; overflow: hidden; }
+        .cv {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .5s ease;
             pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .cv.ok { opacity: 1; }
+        .orb::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 30% 24%, rgba(255,255,255,.8) 0 4%, rgba(255,255,255,.22) 5% 14%, rgba(255,255,255,0) 21%),
+                radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 60%, hsla(var(--h), 95%, 60%, .38) 84%, hsla(var(--h), 100%, 82%, .8) 100%);
         }
         .bubble.is-open { opacity: 0; pointer-events: none; }
         .bubble.pop .orb { animation: pop .35s ease-out; }
@@ -235,22 +248,22 @@
 
         /* ------------------------------------------------------------------
            THE RELEASES
-           one line each: [group, bandcamp embed path, player height, title, artist, bandcamp page]
+           one line each: [group, bandcamp embed path, player height, title, artist, bandcamp page, (optional) cover code of Bandcamp]
            groups: bob = as Bob Hermit, sy = as Sy N'Cope, in = appears in
            (to add a release: copy a line from outputs/music.html and add a line here)
            ------------------------------------------------------------------ */
         var RELEASES = [
-        ["bob", "album=2906692241/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 588, "GW150914", "Bob Hermit", "https://riforma.bandcamp.com/album/gw150914"],
+        ["bob", "album=2906692241/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 588, "GW150914", "Bob Hermit", "https://riforma.bandcamp.com/album/gw150914", "1506403458"],
         ["bob", "album=2964486359/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/track=3776687832/transparent=true/", 470, "PRIMAVERA OVERGROUND (AA.VV.)", "Bob Hermit", "https://mistomame.bandcamp.com/album/primavera-overground-aa-vv"],
         ["bob", "album=3488339121/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/track=512130584/transparent=true/", 470, "BohReal? Compilation • Vol. I", "Bob Hermit", "https://bohrealrecords.bandcamp.com/album/bohreal-compilation-vol-i"],
         ["bob", "album=44445732/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 588, "Memorial Dodging", "Bob Hermit", "https://riforma.bandcamp.com/album/memorial-dodging"],
         ["bob", "track=2353743309/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Lizard Green Eyes (feat. Bob Hermit) - Single", "MC MYASNOI", "https://mc-myasnoi-official.bandcamp.com/track/lizard-green-eyes-feat-bob-hermit-single"],
         ["bob", "album=1825420036/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 687, "Songs of Defeat", "Bob Hermit", "https://bohrealrecords.bandcamp.com/album/songs-of-defeat"],
-        ["bob", "track=4124154201/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "2903", "Bob Hermit", "https://bobhermit.bandcamp.com/track/2903"],
-        ["bob", "track=3578021596/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Missed Call (single) Bob Hermit, Jónína Rebekka", "", "https://bobhermit.bandcamp.com/track/missed-call-feat-j-n-na-rebekka"],
-        ["bob", "track=2695341913/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Ladybird (single) Bob Hermit", "", "https://bobhermit.bandcamp.com/track/ladybird"],
-        ["bob", "album=153448230/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 654, "Dell'amore", "Bob Hermit", "https://bobhermit.bandcamp.com/album/dellamore"],
-        ["bob", "track=371326753/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Petrin Hill", "Bob Hermit", "https://bobhermit.bandcamp.com/track/petrin-hill"],
+        ["bob", "track=4124154201/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "2903", "Bob Hermit", "https://bobhermit.bandcamp.com/track/2903", "2758321071"],
+        ["bob", "track=3578021596/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Missed Call (single) Bob Hermit, Jónína Rebekka", "", "https://bobhermit.bandcamp.com/track/missed-call-feat-j-n-na-rebekka", "0791242005"],
+        ["bob", "track=2695341913/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Ladybird (single) Bob Hermit", "", "https://bobhermit.bandcamp.com/track/ladybird", "1163828813"],
+        ["bob", "album=153448230/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 654, "Dell'amore", "Bob Hermit", "https://bobhermit.bandcamp.com/album/dellamore", "0215427289"],
+        ["bob", "track=371326753/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "Petrin Hill", "Bob Hermit", "https://bobhermit.bandcamp.com/track/petrin-hill", "0198654876"],
         ["bob", "album=3802459807/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/track=3403931951/transparent=true/", 470, "Womb", "Bob Hermit", "https://mistomame.bandcamp.com/album/00185-new-weird-italia"],
         ["bob", "album=4173013612/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/track=3203623074/transparent=true/", 470, "the rope", "Bob Hermit", "https://mistomame.bandcamp.com/album/new-weird-italia-v-a"],
         ["sy", "track=3494928810/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/", 442, "qcLn_NtPoDc", "Sy N'Cope", "https://sy-n-cope.bandcamp.com/track/qcln-ntpodc"],
@@ -279,13 +292,17 @@
         ["in", "album=3937337051/size=large/bgcol=333333/linkcol=ffffff/transparent=true/", 555, "VUDIEMME - EP", "VUDIEMME", "https://bohrealrecords.bandcamp.com/album/vudiemme-ep"]
         ];
 
-        var GROUPS = { bob: 195, sy: 315, 'in': 48 };   // bubble colour (hue) per group
+        var GROUPS = { bob: 195, sy: 195, 'in': 330 };   // bubble colour (hue): Bob Hermit + Sy N'Cope = cyan, appears in = magenta
 
         /* knobs */
         var MAX_OPEN = 1;        // how many players can be open at once
         var ARENA_SCALE = 1.5;   // size of the floating space compared to the screen (>1 = bubbles also leave the screen)
         var SPEED = 1;           // 1 = default drift, 0.5 = slower, 2 = faster
         var EMBED = 'https://bandcamp.com/EmbeddedPlayer/';
+        var BIG = 1.1;           // size of the Bob Hermit / Sy N'Cope bubbles (1 = base size)
+        var SMALL = 0.7;         // size of the "appears in" bubbles
+        var COVER_DIR = '../media/covers/';   // folder with the cover pictures, one per release, named after the Bandcamp album id
+        var COVER_EXT = '.webp';
 
         var arena = document.getElementById('arena');
         var statusEl = document.getElementById('status');
@@ -303,7 +320,7 @@
             ah = vh * ARENA_SCALE;
             ox = (aw - vw) / 2;
             oy = (ah - vh) / 2;
-            base = Math.max(76, Math.min(vw, vh) * 0.14);
+            base = Math.max(84, Math.min(vw, vh) * 0.14);
         }
 
         function sizeBubbles() {
@@ -312,7 +329,6 @@
                 b.m = b.r * b.r;
                 b.speed = (0.18 + b.sp * 0.32) * base * SPEED;
                 b.el.style.width = b.el.style.height = (2 * b.r) + 'px';
-                b.el.style.fontSize = Math.max(9, 2 * b.r * 0.115) + 'px';
             });
         }
 
@@ -320,16 +336,23 @@
         RELEASES.forEach(function (rel, index) {
             var el = document.createElement('button');
             el.type = 'button';
-            el.className = 'bubble';
+            el.className = 'bubble ' + (rel[0] === 'in' ? 'small' : 'big');
             el.dataset.i = index;
             el.setAttribute('aria-label', 'Open player: ' + rel[3] + (rel[4] ? ' - ' + rel[4] : ''));
-            el.style.setProperty('--h', (GROUPS[rel[0]] || 200) + Math.round((Math.random() - 0.5) * 26));
+            el.style.setProperty('--h', GROUPS[rel[0]] || 200);
             var orb = document.createElement('span'); orb.className = 'orb';
-            var label = document.createElement('span'); label.className = 't'; label.textContent = rel[3];
-            orb.appendChild(label); el.appendChild(orb);
+            var cover = document.createElement('img');
+            cover.className = 'cv'; cover.alt = ''; cover.decoding = 'async'; cover.draggable = false;
+            cover.addEventListener('load', function () { cover.classList.add('ok'); });
+            cover.addEventListener('error', function () { cover.remove(); });   // no picture yet: plain glass bubble
+            orb.appendChild(cover); el.appendChild(orb);
             arena.appendChild(el);
-            bodies.push({ el: el, rel: rel, k: 0.78 + Math.random() * 0.4, sp: Math.random(), r: 0, m: 1, x: 0, y: 0, vx: 0, vy: 0,
-                          speed: 0, shown: true, open: false, win: null });
+            var albumId = /(?:album|track)=(\d+)/.exec(rel[1]);   // first id in the embed path: album=... or track=...
+            bodies.push({ el: el, rel: rel, k: rel[0] === 'in' ? SMALL : BIG, sp: Math.random(), r: 0, m: 1, x: 0, y: 0, vx: 0, vy: 0,
+                          speed: 0, shown: true, open: false, win: null,
+                          cover: cover,
+                          // cover address: Bandcamp's own picture when its code is in the list (7th value), otherwise the file in media/covers/
+                          coverUrl: rel[6] ? 'https://f4.bcbits.com/img/a' + rel[6] + '_2.jpg' : (albumId ? COVER_DIR + albumId[1] + COVER_EXT : '') });
         });
 
         measure();
@@ -424,6 +447,12 @@
             render();
             window.requestAnimationFrame(frame);
         }
+
+        /* pictures: the bubbles on screen load first, the others shortly after */
+        bodies.forEach(function (b, index) {
+            if (!b.coverUrl) { b.cover.remove(); return; }
+            setTimeout(function () { if (!b.cover.getAttribute('src')) b.cover.src = b.coverUrl; }, b.shown ? index * 15 : 600 + index * 40);
+        });
 
         document.addEventListener('visibilitychange', function () { last = 0; });
 
