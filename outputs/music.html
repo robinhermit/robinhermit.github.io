@@ -159,7 +159,24 @@
             box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
         }
         .nojs { padding: 20px; font-family: 'Times New Roman', serif; }
+
+        /* switch to the list */
+        #viewlink {
+            position: absolute;
+            top: 10px; right: 12px;
+            z-index: 5;
+            padding: 3px 10px;
+            background: #c0c0c0;
+            color: #000;
+            font: 12px Tahoma, 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+            text-decoration: none;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+        }
+        #viewlink:hover { color: #000080; }
+        #viewlink:active { box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #fff, inset 2px 2px #808080, inset -2px -2px #dfdfdf; }
     </style>
+    <script>window.SITE_LOADING_CONFIG = { pageWaitsFor: 'dom' };   // the bubble covers load on their own, do not cover the bubbles for them</script>
+    <script src="../loading.js"></script>
     <script src="../background.js" defer></script>
 </head>
 <body>
@@ -198,6 +215,7 @@
     </nav>
 
     <main id="arena">
+        <a id="viewlink" href="music2.html">list view</a>
         <noscript>
         <ul class="nojs">
             <li><a href="https://riforma.bandcamp.com/album/gw150914">GW150914 by Bob Hermit</a></li>
