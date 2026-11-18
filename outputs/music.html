@@ -536,9 +536,9 @@
         function updateStatus() {
             if (openOrder.length) {
                 var b = openOrder[openOrder.length - 1];
-                statusEl.textContent = 'Playing: ' + b.rel[3] + (b.rel[4] ? ' - ' + b.rel[4] : '') + '  |  click the background to let the bubble go';
+                statusEl.textContent = 'Playing: ' + b.rel[3] + (b.rel[4] ? ' - ' + b.rel[4] : '') + '  |  ';
             } else {
-                statusEl.textContent = 'Done.  |  ' + bodies.length + ' bubbles  |  click one to open its player, click the background to let it go';
+                statusEl.textContent = 'Done.  |  ' + bodies.length + ' bubbles  |  ';
             }
         }
 
